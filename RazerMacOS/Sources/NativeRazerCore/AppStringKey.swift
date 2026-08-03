@@ -27,12 +27,17 @@ public enum AppStringKey: String, CaseIterable, Sendable {
   case controllerHapticsFailed
   case controllerHapticsUnavailable
   case controllerInputMonitor
+  case controllerLedNextPattern
   case controllerLight
   case controllerPressToTest
+  case controllerProtocolXbox360
+  case controllerProtocolXboxOneGip
+  case controllerSourceXInputDirect
   case controllerSystemInputUnavailable
   case controllerSystemMappingActive
   case controllerSystemMappingDefault
   case controllerTestHaptics
+  case controllerXInputNoInput
   case controlsPreviewHardwareNotMatched
   case controlsUnavailableForDevice
   case couldNotApplyAction

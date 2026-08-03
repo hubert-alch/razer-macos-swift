@@ -62,7 +62,7 @@ Native game-controller targets:
 
 | Device | Product ID | Native status |
 | --- | --- | --- |
-| Razer Wolverine V3 Pro | `0x0A3F` | USB/receiver discovery plus live macOS Game Controller inputs; battery, haptics, and light appear only when macOS exposes them. Razer-specific profiles/remapping still require protocol capture and hardware verification. |
+| Razer Wolverine V3 Pro | `0x0A3F` | USB/receiver discovery plus live input read directly over USB (XInput; Xbox 360 / Xbox One GIP auto-detected, mapping ported from Linux xpad, pending hardware verification); rumble and LED via output reports. Razer-specific profiles/remapping still require protocol capture. |
 
 Legacy catalog coverage:
 
@@ -75,7 +75,7 @@ Legacy catalog coverage:
 | Accessories | 15 | Static color, extended wave, spectrum/breathing effects |
 | Headphones | 8 | Static color, spectrum/breathing effects |
 | eGPU enclosures | 2 | Static color, wave/spectrum/breathing effects |
-| Game controllers | 1 | USB discovery and macOS Game Controller live input; capability-gated battery, haptics, and light |
+| Game controllers | 1 | USB discovery and direct XInput live input; rumble and LED via output reports |
 
 Feature keys used by the catalog: `static`, `spectrum`, `breathe`, `reactive`, `starlight`, `ripple`, `wheel`, `brightness`, `mouseBrightness`, `dpi`, `pollRate`, and `battery`. See the full matrix for the per-device feature list.
 

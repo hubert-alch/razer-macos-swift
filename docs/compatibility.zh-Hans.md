@@ -24,7 +24,7 @@
 
 | 设备 | Product ID | 原生状态 |
 | --- | --- | --- |
-| Razer Wolverine V3 Pro | `0x0A3F` | USB/接收器识别及 macOS Game Controller 实时输入；电量、震动和灯光按系统实际能力显示。雷蛇私有设置仍需协议抓包和实机验证。 |
+| Razer Wolverine V3 Pro | `0x0A3F` | USB/接收器识别，以及经 USB 直接读取的实时输入（XInput，自动识别 Xbox 360 / Xbox One GIP 协议，映射移植自 Linux xpad，待实机验证）；震动和 LED 走输出报告。雷蛇私有设置仍需协议抓包。 |
 
 ## legacy 目录摘要
 
@@ -348,7 +348,7 @@
 
 | 设备 | Product ID | 目录功能 |
 | --- | --- | --- |
-| Razer Wolverine V3 Pro | `0x0a3f` | 支持 macOS Game Controller 实时按键/摇杆；电量、震动和灯光按能力启用，不声明雷蛇私有配置写入。 |
+| Razer Wolverine V3 Pro | `0x0a3f` | 经 USB 直读 XInput 实时按键/摇杆（映射移植自 Linux xpad，待实机验证）；震动和 LED 走输出报告，不声明雷蛇私有配置写入。 |
 
 ### 耳机 (8)
 

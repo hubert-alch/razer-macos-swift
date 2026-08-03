@@ -14,6 +14,13 @@ extern bool is_egpu(IOUSBDeviceInterface **usb_dev);
 extern bool is_headphone(IOUSBDeviceInterface **usb_dev);
 extern bool is_accessory(IOUSBDeviceInterface **usb_dev);
 extern bool is_game_controller(IOUSBDeviceInterface **usb_dev);
+extern int razer_gc_xinput_open(void);
+extern int razer_gc_xinput_poll(RazerGamepadState *state, int timeoutMs);
+extern int razer_gc_xinput_rumble(uint8_t left, uint8_t right);
+extern int razer_gc_xinput_led(uint8_t pattern);
+extern void razer_gc_xinput_close(void);
+extern int razer_gc_parse_360(const uint8_t *data, int len, RazerGamepadState *state);
+extern int razer_gc_parse_gip(const uint8_t *data, int len, RazerGamepadState *state);
 
 enum {
   NATIVE_RAZER_KIND_ACCESSORY = 0,
@@ -84,6 +91,84 @@ static int device_kind_for(IOUSBDeviceInterface **usbDevice) {
 
 int NativeRazerIsGameControllerProductId(unsigned short productId) {
   return is_game_controller_product_id(productId) ? 1 : 0;
+}
+
+// The gamepad state persists across polls so that GIP input reports keep the
+// Guide bit reported by the separate virtual key report.
+static RazerGamepadState xinput_persistent_state = {0};
+
+static NativeRazerGamepadState native_state_from(const RazerGamepadState *raw) {
+  NativeRazerGamepadState state = {0};
+  state.buttons = raw->buttons;
+  state.leftTrigger = raw->leftTrigger;
+  state.rightTrigger = raw->rightTrigger;
+  state.leftX = raw->leftX;
+  state.leftY = raw->leftY;
+  state.rightX = raw->rightX;
+  state.rightY = raw->rightY;
+  state.lastReportTimeMs = raw->lastReportTimeMs;
+  return state;
+}
+
+static RazerGamepadState razer_state_from(const NativeRazerGamepadState *state) {
+  RazerGamepadState raw = {0};
+  raw.buttons = state->buttons;
+  raw.leftTrigger = state->leftTrigger;
+  raw.rightTrigger = state->rightTrigger;
+  raw.leftX = state->leftX;
+  raw.leftY = state->leftY;
+  raw.rightX = state->rightX;
+  raw.rightY = state->rightY;
+  raw.lastReportTimeMs = state->lastReportTimeMs;
+  return raw;
+}
+
+int NativeRazerXInputOpen(void) {
+  return razer_gc_xinput_open();
+}
+
+int NativeRazerXInputPoll(NativeRazerGamepadState *state, int timeoutMs) {
+  if (state == NULL) {
+    return -1;
+  }
+
+  int result = razer_gc_xinput_poll(&xinput_persistent_state, timeoutMs);
+  if (result > 0) {
+    *state = native_state_from(&xinput_persistent_state);
+  }
+  return result;
+}
+
+int NativeRazerXInputRumble(uint8_t left, uint8_t right) {
+  return razer_gc_xinput_rumble(left, right);
+}
+
+int NativeRazerXInputLed(uint8_t pattern) {
+  return razer_gc_xinput_led(pattern);
+}
+
+void NativeRazerXInputClose(void) {
+  razer_gc_xinput_close();
+  RazerGamepadState zeroed = {0};
+  xinput_persistent_state = zeroed;
+}
+
+void NativeRazerXInputParse360(const uint8_t *data, int len, NativeRazerGamepadState *state) {
+  if (state == NULL) {
+    return;
+  }
+  RazerGamepadState raw = razer_state_from(state);
+  razer_gc_parse_360(data, len, &raw);
+  *state = native_state_from(&raw);
+}
+
+void NativeRazerXInputParseGip(const uint8_t *data, int len, NativeRazerGamepadState *state) {
+  if (state == NULL) {
+    return;
+  }
+  RazerGamepadState raw = razer_state_from(state);
+  razer_gc_parse_gip(data, len, &raw);
+  *state = native_state_from(&raw);
 }
 
 int NativeRazerRefreshDevices(NativeRazerDeviceSnapshot *snapshots, int maxSnapshots) {

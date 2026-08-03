@@ -62,7 +62,7 @@ Razer 現在提供 [Razer Synapse for Mac](https://mysupport.razer.com/app/answe
 
 | 裝置 | Product ID | 原生狀態 |
 | --- | --- | --- |
-| Razer Wolverine V3 Pro | `0x0A3F` | USB/接收器偵測及 macOS Game Controller 即時輸入；電量、震動及燈光僅在 macOS 提供相應能力時顯示。Razer 私有設定檔/按鍵映射仍需協定擷取及實機驗證。 |
+| Razer Wolverine V3 Pro | `0x0A3F` | USB/接收器偵測，以及經 USB 直接讀取的即時輸入（XInput，自動識別 Xbox 360 / Xbox One GIP 協定，映射移植自 Linux xpad，待實機驗證）；震動和 LED 走輸出報告。Razer 私有設定檔/按鍵映射仍需協定擷取。 |
 
 legacy 目錄覆蓋：
 

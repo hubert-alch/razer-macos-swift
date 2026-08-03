@@ -24,7 +24,7 @@ This matrix is generated from the current `src/devices/*.json` catalog and the l
 
 | Device | Product ID | Native status |
 | --- | --- | --- |
-| Razer Wolverine V3 Pro | `0x0A3F` | USB/receiver discovery and live macOS Game Controller input. Battery, haptics, and light are capability-gated; Razer-specific settings still need protocol capture and hardware verification. |
+| Razer Wolverine V3 Pro | `0x0A3F` | USB/receiver discovery plus live input read directly over USB (XInput; Xbox 360 / Xbox One GIP auto-detected, ported from Linux xpad). Rumble and LED via output reports. Pending hardware verification; Razer-specific settings still need protocol capture. |
 
 ## Legacy Catalog Summary
 
@@ -348,7 +348,7 @@ This matrix is generated from the current `src/devices/*.json` catalog and the l
 
 | Device | Product ID | Catalog features |
 | --- | --- | --- |
-| Razer Wolverine V3 Pro | `0x0a3f` | Live buttons/axes through macOS Game Controller; conditional battery, haptics, and light. Vendor profile/remapping writes are not claimed. |
+| Razer Wolverine V3 Pro | `0x0a3f` | Live buttons/axes read directly over USB via XInput (mapping ported from Linux xpad, pending hardware verification); rumble and LED via output reports. Vendor profile/remapping writes are not claimed. |
 
 ### Headphones (8)
 
