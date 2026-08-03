@@ -65,6 +65,7 @@ public struct NativeDevice: Identifiable, Equatable, Sendable {
 public enum NativeDeviceKind: String, CaseIterable, Identifiable, Sendable {
   case accessory
   case egpu
+  case gameController = "gamecontroller"
   case headphone
   case keyboard
   case mouse

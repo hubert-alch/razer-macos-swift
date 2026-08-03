@@ -25,6 +25,27 @@ struct NativeDeviceStoreHardwareTests {
     #expect(device.controlConfiguration.supportsLighting)
   }
 
+  @Test func refresh_whenGameControllerHardwareMatchesCatalog_marksConnected() throws {
+    let hardware = FakeHardwareController(
+      devices: [
+        HardwareDeviceSnapshot(
+          internalDeviceId: 88,
+          productId: "0x0A3F",
+          kind: .gameController
+        )
+      ]
+    )
+
+    let store = NativeDeviceStore(hardwareController: hardware)
+    let device = try #require(store.devices.first { device in
+      device.productId == "0x0A3F"
+    })
+
+    #expect(device.hardwareInternalId == 88)
+    #expect(device.kind == .gameController)
+    #expect(device.bridgeStatusMessage == .connected)
+  }
+
   @Test func hardwareController_whenSettingLightingOrBrightness_returnsPreviewOnly() {
     let controller = NativeRazerHardwareController()
 

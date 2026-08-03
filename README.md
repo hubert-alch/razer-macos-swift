@@ -36,14 +36,14 @@ Razer now provides [Razer Synapse for Mac](https://mysupport.razer.com/app/answe
 - C bridge from Swift into `librazermacos`
 - Native release packaging script for universal Developer ID signed zip/dmg artifacts
 - GitHub Actions workflow for signed, notarized GitHub Releases
-- Refreshed device catalog under `src/devices` with 267 device JSON profiles
+- Refreshed device catalog under `src/devices` with 268 device JSON profiles
 - Legacy Electron app retained as a reference implementation and fallback
 
 ## Support Matrix
 
 There are two support layers in this repository:
 
-- Legacy Electron app keeps the broad device catalog from the original razer-macos/OpenRazer work. The `src/devices` directory currently contains 267 device JSON profiles, and the legacy UI still owns the historical color, brightness, state, keyboard, mouse, mouse mat, dock, eGPU, headphone, and laptop logic.
+- Legacy Electron app keeps the broad device catalog from the original razer-macos/OpenRazer work. The `src/devices` directory currently contains 268 device JSON profiles, and the legacy UI still owns the historical color, brightness, state, keyboard, mouse, mouse mat, dock, eGPU, headphone, game-controller, and laptop logic.
 - Native app verified hardware path is stricter. A device is listed here only when the SwiftUI/AppKit surface, C bridge, and macOS hardware behavior have been wired and tested. DeathAdder V3 Pro is the first verified native control target; this is not the full native support matrix and it does not mean the project supports only one mouse.
 
 Full compatibility matrix:
@@ -58,6 +58,12 @@ Native verified control targets:
 | --- | --- | --- |
 | Razer DeathAdder V3 Pro | `0x00B7` | Discovery, DPI, polling rate, battery/status |
 
+Native game-controller targets:
+
+| Device | Product ID | Native status |
+| --- | --- | --- |
+| Razer Wolverine V3 Pro | `0x0A3F` | USB/receiver discovery plus live macOS Game Controller inputs; battery, haptics, and light appear only when macOS exposes them. Razer-specific profiles/remapping still require protocol capture and hardware verification. |
+
 Legacy catalog coverage:
 
 | Device class | Count | Catalog feature families |
@@ -69,6 +75,7 @@ Legacy catalog coverage:
 | Accessories | 15 | Static color, extended wave, spectrum/breathing effects |
 | Headphones | 8 | Static color, spectrum/breathing effects |
 | eGPU enclosures | 2 | Static color, wave/spectrum/breathing effects |
+| Game controllers | 1 | USB discovery and macOS Game Controller live input; capability-gated battery, haptics, and light |
 
 Feature keys used by the catalog: `static`, `spectrum`, `breathe`, `reactive`, `starlight`, `ripple`, `wheel`, `brightness`, `mouseBrightness`, `dpi`, `pollRate`, and `battery`. See the full matrix for the per-device feature list.
 

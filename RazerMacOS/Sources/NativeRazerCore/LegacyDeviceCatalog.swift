@@ -46,7 +46,7 @@ public struct LegacyDeviceDefinition: Equatable, Sendable {
 
   private var defaultConnection: String {
     switch kind {
-    case .mouse, .keyboard, .mouseDock, .mouseMat, .headphone, .accessory, .egpu:
+    case .mouse, .keyboard, .mouseDock, .mouseMat, .headphone, .accessory, .egpu, .gameController:
       "USB / receiver"
     case .unknown:
       "Legacy profile"
@@ -2778,6 +2778,16 @@ public enum LegacyDeviceCatalog {
       featureKeys: [.pollRate, .dpi, .battery],
       dpiMax: 35000,
       pollRates: [125, 500, 1000, 2000, 4000, 8000],
+      brightnessZones: []
+    ),
+    LegacyDeviceDefinition(
+      id: "wolverine_v3_pro",
+      name: "Razer Wolverine V3 Pro",
+      productId: "0x0A3F",
+      kind: .gameController,
+      featureKeys: [],
+      dpiMax: nil,
+      pollRates: [],
       brightnessZones: []
     ),
   ]

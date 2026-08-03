@@ -121,5 +121,7 @@ yarn.lock
 .omo/
 NativeRazerMacOS/.build/
 NativeRazerMacOS/.swiftpm/
+RazerMacOS/.build/
+RazerMacOS/.swiftpm/
 .codegraph
 .code-review-graph/

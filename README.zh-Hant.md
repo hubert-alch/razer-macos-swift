@@ -36,14 +36,14 @@ Razer 現在提供 [Razer Synapse for Mac](https://mysupport.razer.com/app/answe
 - Swift 到 `librazermacos` 的 C bridge
 - 原生 release 打包腳本，可產生 universal Developer ID 簽名 zip/dmg artifacts
 - GitHub Actions workflow，可產生已簽名、已公證的 GitHub Releases
-- `src/devices` 裝置目錄已更新，目前有 267 個裝置 JSON profile
+- `src/devices` 裝置目錄已更新，目前有 268 個裝置 JSON profile
 - legacy Electron app 保留為參考實作與 fallback
 
 ## 相容裝置與功能
 
 此倉庫有兩層支援：
 
-- legacy Electron app 保留原 razer-macos/OpenRazer 工作的廣泛裝置目錄。`src/devices` 目前有 267 個裝置 JSON profile，legacy UI 仍保留歷史的顏色、亮度、狀態、鍵盤、滑鼠、滑鼠墊、dock、eGPU、耳機與筆電相關邏輯。
+- legacy Electron app 保留原 razer-macos/OpenRazer 工作的廣泛裝置目錄。`src/devices` 目前有 268 個裝置 JSON profile，legacy UI 仍保留歷史的顏色、亮度、狀態、鍵盤、滑鼠、滑鼠墊、dock、eGPU、耳機、手掣與筆電相關邏輯。
 - 原生 app 的硬體驗證標準較嚴格。只有 SwiftUI/AppKit 介面、C bridge、macOS 硬體行為都已接好並測過的裝置，才會列入原生已驗證清單。DeathAdder V3 Pro 是第一個原生已驗證控制目標；這不是完整原生支援矩陣，也不代表專案只支援一款滑鼠。
 
 完整相容性矩陣：
@@ -58,6 +58,12 @@ Razer 現在提供 [Razer Synapse for Mac](https://mysupport.razer.com/app/answe
 | --- | --- | --- |
 | Razer DeathAdder V3 Pro | `0x00B7` | 偵測、DPI、回報率、電池/狀態 |
 
+原生手掣目標：
+
+| 裝置 | Product ID | 原生狀態 |
+| --- | --- | --- |
+| Razer Wolverine V3 Pro | `0x0A3F` | USB/接收器偵測及 macOS Game Controller 即時輸入；電量、震動及燈光僅在 macOS 提供相應能力時顯示。Razer 私有設定檔/按鍵映射仍需協定擷取及實機驗證。 |
+
 legacy 目錄覆蓋：
 
 | 裝置類別 | 數量 | 目錄功能類型 |
@@ -69,6 +75,7 @@ legacy 目錄覆蓋：
 | 配件 | 15 | 固定顏色、擴展波浪、光譜/呼吸效果 |
 | 耳機 | 8 | 固定顏色、光譜/呼吸效果 |
 | eGPU 外接盒 | 2 | 固定顏色、波浪/光譜/呼吸效果 |
+| 手掣 | 1 | USB 偵測及 macOS Game Controller 即時輸入；電量、震動及燈光按系統能力啟用 |
 
 目錄使用的功能 key 包括：`static`、`spectrum`、`breathe`、`reactive`、`starlight`、`ripple`、`wheel`、`brightness`、`mouseBrightness`、`dpi`、`pollRate`、`battery`。每款裝置的完整功能列表請看完整相容性矩陣。
 

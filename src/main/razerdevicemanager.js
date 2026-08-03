@@ -65,7 +65,8 @@ export class RazerDeviceManager {
       RazerDeviceType.MOUSEMAT,
       RazerDeviceType.EGPU,
       RazerDeviceType.HEADPHONE,
-      RazerDeviceType.ACCESSORY
+      RazerDeviceType.ACCESSORY,
+      RazerDeviceType.GAMECONTROLLER
     ]; // we could offer this as a personal setting in the future
 
     return devices.sort((deviceA, deviceB) => {

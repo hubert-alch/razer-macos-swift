@@ -119,6 +119,8 @@ write_info_plist() {
   <string>$APP_VERSION</string>
   <key>LSMinimumSystemVersion</key>
   <string>$MIN_SYSTEM_VERSION</string>
+  <key>GCSupportsControllerUserInteraction</key>
+  <true/>
   <key>NSPrincipalClass</key>
   <string>NSApplication</string>
 </dict>

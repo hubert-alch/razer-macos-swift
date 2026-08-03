@@ -21,7 +21,20 @@ public enum AppStringKey: String, CaseIterable, Sendable {
   case connectionLibrazermacosInternal
   case connectionUSBReceiverWired
   case connectedDevices
+  case controllerAxes
+  case controllerConnectPrompt
+  case controllerHapticsAvailable
+  case controllerHapticsFailed
+  case controllerHapticsUnavailable
+  case controllerInputMonitor
+  case controllerLight
+  case controllerPressToTest
+  case controllerSystemInputUnavailable
+  case controllerSystemMappingActive
+  case controllerSystemMappingDefault
+  case controllerTestHaptics
   case controlsPreviewHardwareNotMatched
+  case controlsUnavailableForDevice
   case couldNotApplyAction
   case device
   case deviceBridge

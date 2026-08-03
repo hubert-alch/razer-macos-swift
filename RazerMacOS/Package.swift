@@ -26,7 +26,11 @@ let package = Package(
     .executableTarget(
       name: "RazerMacOS",
       dependencies: ["NativeRazerBridgeC", "NativeRazerCore"],
-      path: "Sources/RazerMacOS"
+      path: "Sources/RazerMacOS",
+      linkerSettings: [
+        .linkedFramework("CoreHaptics"),
+        .linkedFramework("GameController")
+      ]
     ),
     .testTarget(
       name: "NativeRazerCoreTests",
@@ -34,7 +38,7 @@ let package = Package(
     ),
     .testTarget(
       name: "RazerMacOSTests",
-      dependencies: ["NativeRazerCore", "RazerMacOS"],
+      dependencies: ["NativeRazerBridgeC", "NativeRazerCore", "RazerMacOS"],
       path: "Tests/RazerMacOSTests"
     )
   ]

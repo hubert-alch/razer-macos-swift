@@ -6,7 +6,7 @@
 
 這份矩陣根據目前的 `src/devices/*.json` 目錄，以及 legacy Electron 版在 `src/main/feature/featurehelper.js` 內定義的預設功能集產生。
 
-> 由 267 個裝置 JSON profile 產生。
+> 由 268 個裝置 JSON profile 產生。
 
 ## 支援邊界
 
@@ -20,6 +20,12 @@
 | --- | --- | --- | --- |
 | Razer DeathAdder V3 Pro | `0x00B7` | 偵測、DPI、回報率、電池/狀態 | 第一個已驗證目標；目前硬體路徑的讀回仍可能逾時 |
 
+## 原生手掣目標
+
+| 裝置 | Product ID | 原生狀態 |
+| --- | --- | --- |
+| Razer Wolverine V3 Pro | `0x0A3F` | USB/接收器偵測及 macOS Game Controller 即時輸入；電量、震動及燈光按系統實際能力顯示。Razer 私有設定仍需協定擷取及實機驗證。 |
+
 ## legacy 目錄摘要
 
 | 類別 | 裝置數量 |
@@ -31,6 +37,7 @@
 | 配件 | 15 |
 | 耳機 | 8 |
 | eGPU 外接盒 | 2 |
+| 手掣 | 1 |
 
 ## 功能圖例
 
@@ -336,6 +343,12 @@
 | Razer Raptor 27 | `0x0f12` | 關燈 / 無效果, 固定顏色, 擴展波浪, 光譜循環, 呼吸燈 |
 | Razer Thunderbolt 4 Dock Chroma | `0x0F21` | 關燈 / 無效果, 固定顏色, 擴展波浪, 光譜循環, 呼吸燈 |
 | Razer Tomahawk ATX | `0x0f17` | 關燈 / 無效果, 固定顏色, 擴展波浪, 光譜循環, 呼吸燈 |
+
+### 手掣 (1)
+
+| 裝置 | Product ID | 目錄功能 |
+| --- | --- | --- |
+| Razer Wolverine V3 Pro | `0x0a3f` | 支援 macOS Game Controller 即時按鍵/搖桿；電量、震動及燈光按能力啟用，不聲稱 Razer 私有設定寫入。 |
 
 ### 耳機 (8)
 

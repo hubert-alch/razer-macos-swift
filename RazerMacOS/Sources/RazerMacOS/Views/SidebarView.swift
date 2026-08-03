@@ -77,6 +77,8 @@ struct SidebarView: View {
       "headphones"
     case .egpu:
       "externaldrive"
+    case .gameController:
+      "gamecontroller"
     case .accessory:
       "sparkles"
     case .unknown:

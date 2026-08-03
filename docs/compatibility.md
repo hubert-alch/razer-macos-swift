@@ -6,7 +6,7 @@
 
 This matrix is generated from the current `src/devices/*.json` catalog and the legacy Electron feature defaults in `src/main/feature/featurehelper.js`.
 
-> Generated from 267 device JSON profiles.
+> Generated from 268 device JSON profiles.
 
 ## Support Boundary
 
@@ -20,6 +20,12 @@ This matrix is generated from the current `src/devices/*.json` catalog and the l
 | --- | --- | --- | --- |
 | Razer DeathAdder V3 Pro | `0x00B7` | Discovery, DPI, polling rate, battery/status | Verified first target; readback can still time out on current hardware path |
 
+## Native Game Controller Target
+
+| Device | Product ID | Native status |
+| --- | --- | --- |
+| Razer Wolverine V3 Pro | `0x0A3F` | USB/receiver discovery and live macOS Game Controller input. Battery, haptics, and light are capability-gated; Razer-specific settings still need protocol capture and hardware verification. |
+
 ## Legacy Catalog Summary
 
 | Class | Devices |
@@ -31,6 +37,7 @@ This matrix is generated from the current `src/devices/*.json` catalog and the l
 | Accessories | 15 |
 | Headphones | 8 |
 | eGPU enclosures | 2 |
+| Game controllers | 1 |
 
 ## Feature Legend
 
@@ -336,6 +343,12 @@ This matrix is generated from the current `src/devices/*.json` catalog and the l
 | Razer Raptor 27 | `0x0f12` | Off / no effect, Static color, Extended wave, Spectrum cycle, Breathing |
 | Razer Thunderbolt 4 Dock Chroma | `0x0F21` | Off / no effect, Static color, Extended wave, Spectrum cycle, Breathing |
 | Razer Tomahawk ATX | `0x0f17` | Off / no effect, Static color, Extended wave, Spectrum cycle, Breathing |
+
+### Game controllers (1)
+
+| Device | Product ID | Catalog features |
+| --- | --- | --- |
+| Razer Wolverine V3 Pro | `0x0a3f` | Live buttons/axes through macOS Game Controller; conditional battery, haptics, and light. Vendor profile/remapping writes are not claimed. |
 
 ### Headphones (8)
 

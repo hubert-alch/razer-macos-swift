@@ -24,6 +24,7 @@ int NativeRazerRefreshDevices(NativeRazerDeviceSnapshot *snapshots, int maxSnaps
 int NativeRazerRefreshMice(NativeRazerMouseSnapshot *snapshots, int maxSnapshots);
 int NativeRazerSetMouseDPI(int internalDeviceId, unsigned short dpi);
 int NativeRazerSetMousePollingRate(int internalDeviceId, unsigned short pollingRate);
+int NativeRazerIsGameControllerProductId(unsigned short productId);
 void NativeRazerShutdown(void);
 
 #ifdef __cplusplus

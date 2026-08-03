@@ -13,6 +13,7 @@ extern bool is_mouse_mat(IOUSBDeviceInterface **usb_dev);
 extern bool is_egpu(IOUSBDeviceInterface **usb_dev);
 extern bool is_headphone(IOUSBDeviceInterface **usb_dev);
 extern bool is_accessory(IOUSBDeviceInterface **usb_dev);
+extern bool is_game_controller(IOUSBDeviceInterface **usb_dev);
 
 enum {
   NATIVE_RAZER_KIND_ACCESSORY = 0,
@@ -22,7 +23,8 @@ enum {
   NATIVE_RAZER_KIND_MOUSE = 4,
   NATIVE_RAZER_KIND_MOUSE_DOCK = 5,
   NATIVE_RAZER_KIND_MOUSE_MAT = 6,
-  NATIVE_RAZER_KIND_UNKNOWN = 7
+  NATIVE_RAZER_KIND_GAME_CONTROLLER = 7,
+  NATIVE_RAZER_KIND_UNKNOWN = 8
 };
 
 static RazerDevices cached_devices = {0};
@@ -74,7 +76,14 @@ static int device_kind_for(IOUSBDeviceInterface **usbDevice) {
   if (is_accessory(usbDevice)) {
     return NATIVE_RAZER_KIND_ACCESSORY;
   }
+  if (is_game_controller(usbDevice)) {
+    return NATIVE_RAZER_KIND_GAME_CONTROLLER;
+  }
   return NATIVE_RAZER_KIND_UNKNOWN;
+}
+
+int NativeRazerIsGameControllerProductId(unsigned short productId) {
+  return is_game_controller_product_id(productId) ? 1 : 0;
 }
 
 int NativeRazerRefreshDevices(NativeRazerDeviceSnapshot *snapshots, int maxSnapshots) {

@@ -7,7 +7,8 @@ extension AppText {
     - Menu-bar resident app
     - Launch at Login
     - Legacy device catalog loaded in Swift
-    - Keyboard, mouse, mouse mat, dock, eGPU, headphone, and accessory profiles
+    - Keyboard, mouse, mouse mat, dock, eGPU, headphone, accessory, and game-controller profiles
+    - Live game-controller buttons/axes plus haptics, light, and battery when exposed by macOS
     - Lighting-effect, RGB, and brightness controls in native preview
     - DPI and polling-rate writes through librazermacos for matched mice
     - Hardware status with conservative timeout reporting
@@ -37,7 +38,20 @@ extension AppText {
     .connectionLibrazermacosInternal: "librazermacos internal #%@",
     .connectionUSBReceiverWired: "USB receiver / wired",
     .connectedDevices: "Connected devices",
+    .controllerAxes: "Sticks and directional pads",
+    .controllerConnectPrompt: "Connect the controller to see live buttons, axes, and system-supported outputs here.",
+    .controllerHapticsAvailable: "macOS exposes haptic output for this controller.",
+    .controllerHapticsFailed: "Haptic test failed: %@",
+    .controllerHapticsUnavailable: "macOS does not currently expose haptic output for this controller.",
+    .controllerInputMonitor: "Live controller test",
+    .controllerLight: "Controller light",
+    .controllerPressToTest: "Press a controller button or move a stick to see its value update live.",
+    .controllerSystemInputUnavailable: "USB is detected, but macOS has not exposed standard controller input. Switch to PC mode or use a wired connection, then refresh.",
+    .controllerSystemMappingActive: "The custom macOS button mapping is active.",
+    .controllerSystemMappingDefault: "The default macOS button mapping is active.",
+    .controllerTestHaptics: "Test Haptics",
     .controlsPreviewHardwareNotMatched: "Controls available in preview; hardware not matched.",
+    .controlsUnavailableForDevice: "No hardware controls are currently available for this device.",
     .couldNotApplyAction: "Could not apply %@",
     .device: "Device",
     .deviceBridge: "Device bridge",

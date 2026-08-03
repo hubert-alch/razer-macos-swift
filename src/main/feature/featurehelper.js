@@ -113,6 +113,8 @@ export class FeatureHelper {
           new FeatureSpectrum(),
           new FeatureBreathe(),
         ];
+      case RazerDeviceType.GAMECONTROLLER:
+        return [];
       default:
         console.warn("Unknown mainType "+mainType+". Can't detect feature set.");
         return [];

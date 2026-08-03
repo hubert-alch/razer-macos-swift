@@ -21,6 +21,21 @@ struct DeviceControlsView: View {
   var body: some View {
     GroupBox(AppText.string(.deviceControls, language: language)) {
       VStack(alignment: .leading, spacing: 18) {
+        if device.kind == .gameController {
+          GameControllerControlsView(
+            deviceName: device.name,
+            usbConnected: device.hardwareInternalId != nil
+          )
+        }
+
+        if !hasHardwareControls {
+          Label(
+            AppText.string(.controlsUnavailableForDevice, language: language),
+            systemImage: "info.circle"
+          )
+          .foregroundStyle(.secondary)
+        }
+
         if let dpiConfiguration = device.controlConfiguration.dpi {
           dpiControl(dpiConfiguration)
         }
@@ -44,6 +59,14 @@ struct DeviceControlsView: View {
         syncDrafts()
       }
     }
+  }
+
+  private var hasHardwareControls: Bool {
+    device.kind == .gameController
+      || device.controlConfiguration.dpi != nil
+      || device.controlConfiguration.supportsPollingRate
+      || device.capabilities.contains(.battery)
+      || device.controlConfiguration.supportsLighting
   }
 
   private func dpiControl(_ configuration: DPIConfiguration) -> some View {

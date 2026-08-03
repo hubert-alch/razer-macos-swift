@@ -7,7 +7,8 @@ extension AppText {
     - 系统状态栏常驻
     - 登录时启动
     - Swift 已加载旧版设备目录
-    - 键盘、鼠标、鼠标垫、底座、eGPU、耳机和配件配置
+    - 键盘、鼠标、鼠标垫、底座、eGPU、耳机、配件和手柄配置
+    - 手柄实时按键/摇杆测试，以及系统支持时的震动、灯光和电量控制
     - 原生预览灯效、RGB 和亮度控制
     - 对已匹配鼠标通过 librazermacos 写入 DPI 和回报率
     - 带保守超时提示的硬件状态
@@ -37,7 +38,20 @@ extension AppText {
     .connectionLibrazermacosInternal: "librazermacos 内部编号 #%@",
     .connectionUSBReceiverWired: "USB 接收器 / 有线",
     .connectedDevices: "已连接设备",
+    .controllerAxes: "摇杆与方向键",
+    .controllerConnectPrompt: "请连接手柄；连接后这里会实时显示按键、摇杆及系统可用的输出功能。",
+    .controllerHapticsAvailable: "macOS 已提供此手柄的震动输出。",
+    .controllerHapticsFailed: "震动测试失败：%@",
+    .controllerHapticsUnavailable: "macOS 当前未提供此手柄的震动输出。",
+    .controllerInputMonitor: "实时手柄测试",
+    .controllerLight: "手柄灯光",
+    .controllerPressToTest: "按下手柄按键或移动摇杆，下方数值会实时变化。",
+    .controllerSystemInputUnavailable: "USB 已识别，但 macOS 尚未提供标准手柄输入。请切换到 PC 模式或改用有线连接后刷新。",
+    .controllerSystemMappingActive: "当前使用 macOS 的自定义按键映射。",
+    .controllerSystemMappingDefault: "当前使用 macOS 的默认按键映射。",
+    .controllerTestHaptics: "测试震动",
     .controlsPreviewHardwareNotMatched: "控件可预览；未匹配到硬件。",
+    .controlsUnavailableForDevice: "此设备当前没有可用的控制项。",
     .couldNotApplyAction: "无法应用 %@",
     .device: "设备",
     .deviceBridge: "设备桥接",

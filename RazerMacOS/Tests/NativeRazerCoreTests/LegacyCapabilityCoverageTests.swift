@@ -27,6 +27,18 @@ struct LegacyCapabilityCoverageTests {
     #expect(!device.controlConfiguration.supportsLighting)
   }
 
+  @Test func wolverineV3Pro_whenLoaded_hasSystemControllerSurfaceWithoutVendorConfiguration() throws {
+    let inventory = MigrationInventory()
+    let device = try #require(inventory.devices.first { device in
+      device.productId == "0x0A3F"
+    })
+
+    #expect(device.name == "Razer Wolverine V3 Pro")
+    #expect(device.kind == .gameController)
+    #expect(device.capabilities == [.discovery])
+    #expect(device.controlConfiguration == .none)
+  }
+
   @Test func lightingMode_whenLoaded_coversLegacyLightingEffects() {
     let modeNames = Set(LightingMode.allCases.map(\.rawValue))
 

@@ -7,3 +7,4 @@ RazerDeviceType.MOUSEMAT = 'mousemat';
 RazerDeviceType.EGPU = 'egpu';
 RazerDeviceType.HEADPHONE = 'headphone';
 RazerDeviceType.ACCESSORY = 'accessory';
+RazerDeviceType.GAMECONTROLLER = 'gamecontroller';

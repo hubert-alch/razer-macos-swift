@@ -127,6 +127,8 @@ final class NativeRazerHardwareController: NativeRazerHardwareControlling {
       .mouseDock
     case 6:
       .mouseMat
+    case 7:
+      .gameController
     default:
       .unknown
     }

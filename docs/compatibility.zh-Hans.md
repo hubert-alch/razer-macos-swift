@@ -6,7 +6,7 @@
 
 这份矩阵根据当前的 `src/devices/*.json` 目录，以及 legacy Electron 版在 `src/main/feature/featurehelper.js` 中定义的默认功能集生成。
 
-> 由 267 个设备 JSON profile 生成。
+> 由 268 个设备 JSON profile 生成。
 
 ## 支持边界
 
@@ -20,6 +20,12 @@
 | --- | --- | --- | --- |
 | Razer DeathAdder V3 Pro | `0x00B7` | 识别、DPI、回报率、电池/状态 | 第一个已验证目标；当前硬件路径的读取仍可能超时 |
 
+## 原生手柄目标
+
+| 设备 | Product ID | 原生状态 |
+| --- | --- | --- |
+| Razer Wolverine V3 Pro | `0x0A3F` | USB/接收器识别及 macOS Game Controller 实时输入；电量、震动和灯光按系统实际能力显示。雷蛇私有设置仍需协议抓包和实机验证。 |
+
 ## legacy 目录摘要
 
 | 类别 | 设备数量 |
@@ -31,6 +37,7 @@
 | 配件 | 15 |
 | 耳机 | 8 |
 | eGPU 外接盒 | 2 |
+| 手柄 | 1 |
 
 ## 功能图例
 
@@ -336,6 +343,12 @@
 | Razer Raptor 27 | `0x0f12` | 关灯 / 无效果, 固定颜色, 扩展波浪, 光谱循环, 呼吸灯 |
 | Razer Thunderbolt 4 Dock Chroma | `0x0F21` | 关灯 / 无效果, 固定颜色, 扩展波浪, 光谱循环, 呼吸灯 |
 | Razer Tomahawk ATX | `0x0f17` | 关灯 / 无效果, 固定颜色, 扩展波浪, 光谱循环, 呼吸灯 |
+
+### 手柄 (1)
+
+| 设备 | Product ID | 目录功能 |
+| --- | --- | --- |
+| Razer Wolverine V3 Pro | `0x0a3f` | 支持 macOS Game Controller 实时按键/摇杆；电量、震动和灯光按能力启用，不声明雷蛇私有配置写入。 |
 
 ### 耳机 (8)
 
