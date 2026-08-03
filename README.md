@@ -125,13 +125,13 @@ The native app keeps running after its main window is closed. Reopen it from the
 Create local native release artifacts:
 
 ```sh
-APP_VERSION=0.4.16 MACOS_SIGNING_MODE=auto ./script/package_native.sh
+APP_VERSION=0.4.17 MACOS_SIGNING_MODE=auto ./script/package_native.sh
 ```
 
 For a Developer ID signed local package, make sure a `Developer ID Application` identity is installed in the login keychain, then run:
 
 ```sh
-APP_VERSION=0.4.16 MACOS_SIGNING_MODE=required ./script/package_native.sh
+APP_VERSION=0.4.17 MACOS_SIGNING_MODE=required ./script/package_native.sh
 ```
 
 The script writes:
@@ -147,7 +147,7 @@ The `.dmg` contains `Razer macOS.app`, an `Applications` shortcut, and a Finder 
 Ad-hoc packages are useful for local testing only:
 
 ```sh
-APP_VERSION=0.4.16 MACOS_SIGNING_MODE=adhoc ./script/package_native.sh
+APP_VERSION=0.4.17 MACOS_SIGNING_MODE=adhoc ./script/package_native.sh
 ```
 
 Public downloads should be Developer ID signed and notarized. GitHub Releases are built by `.github/workflows/native-release.yml` when a `v*` tag is pushed or when the `Razer macOS Release` workflow is run manually.
@@ -166,11 +166,11 @@ Required repository secrets:
 Run a release from the command line after the secrets are configured:
 
 ```sh
-git tag v0.4.16
-git push fork v0.4.16
+git tag v0.4.17
+git push fork v0.4.17
 ```
 
-Or use GitHub Actions workflow dispatch with `version=0.4.16`. The workflow runs Swift tests, signs the native app and disk image, submits notarization, staples the app and disk image, uploads build artifacts, and publishes the GitHub Release assets.
+Or use GitHub Actions workflow dispatch with `version=0.4.17`. The workflow runs Swift tests, signs the native app and disk image, submits notarization, staples the app and disk image, uploads build artifacts, and publishes the GitHub Release assets.
 
 ## Legacy Electron App
 
