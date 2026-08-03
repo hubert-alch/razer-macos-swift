@@ -6,7 +6,7 @@ DISPLAY_NAME="Razer macOS"
 APP_BUNDLE_NAME="$DISPLAY_NAME.app"
 BUNDLE_ID="com.w2ysw3m.RazerMacOS"
 MIN_SYSTEM_VERSION="14.0"
-APP_VERSION="${APP_VERSION:-0.4.15}"
+APP_VERSION="${APP_VERSION:-0.4.16}"
 SIGNING_MODE="${MACOS_SIGNING_MODE:-auto}"
 SIGN_IDENTITY="${MACOS_CODESIGN_IDENTITY:-}"
 NOTARIZE="${MACOS_NOTARIZE:-0}"
@@ -34,7 +34,7 @@ CHECKSUM_PATH="$DIST_DIR/SHA256SUMS.txt"
 
 usage() {
   cat >&2 <<USAGE
-usage: APP_VERSION=0.4.15 MACOS_SIGNING_MODE=auto|required|adhoc|none ./script/package_native.sh
+usage: APP_VERSION=0.4.16 MACOS_SIGNING_MODE=auto|required|adhoc|none ./script/package_native.sh
 
 Environment:
   APP_VERSION                 Release version written into Info.plist and artifact names.

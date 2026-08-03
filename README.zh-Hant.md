@@ -125,13 +125,13 @@ swift test --package-path RazerMacOS
 建立本地原生 release artifacts：
 
 ```sh
-APP_VERSION=0.4.15 MACOS_SIGNING_MODE=auto ./script/package_native.sh
+APP_VERSION=0.4.16 MACOS_SIGNING_MODE=auto ./script/package_native.sh
 ```
 
 如果要產生 Developer ID 簽名的本地套件，請先確認登入鑰匙圈裡已安裝 `Developer ID Application` 身份，然後執行：
 
 ```sh
-APP_VERSION=0.4.15 MACOS_SIGNING_MODE=required ./script/package_native.sh
+APP_VERSION=0.4.16 MACOS_SIGNING_MODE=required ./script/package_native.sh
 ```
 
 腳本會輸出：
@@ -147,7 +147,7 @@ APP_VERSION=0.4.15 MACOS_SIGNING_MODE=required ./script/package_native.sh
 Ad-hoc 套件只適合本地測試：
 
 ```sh
-APP_VERSION=0.4.15 MACOS_SIGNING_MODE=adhoc ./script/package_native.sh
+APP_VERSION=0.4.16 MACOS_SIGNING_MODE=adhoc ./script/package_native.sh
 ```
 
 公開下載版本應使用 Developer ID 簽名並完成 Apple 公證。推送 `v*` tag，或手動執行 `Razer macOS Release` workflow 時，`.github/workflows/native-release.yml` 會建置 GitHub Release。
@@ -166,11 +166,11 @@ APP_VERSION=0.4.15 MACOS_SIGNING_MODE=adhoc ./script/package_native.sh
 secrets 設定完成後，可用命令列發佈：
 
 ```sh
-git tag v0.4.15
-git push fork v0.4.15
+git tag v0.4.16
+git push fork v0.4.16
 ```
 
-也可以在 GitHub Actions 內用 workflow dispatch，輸入 `version=0.4.15`。workflow 會執行 Swift 測試、簽名原生 app 與 disk image、提交 Apple 公證、staple app 與 disk image、上傳建置 artifacts，並發佈 GitHub Release assets。
+也可以在 GitHub Actions 內用 workflow dispatch，輸入 `version=0.4.16`。workflow 會執行 Swift 測試、簽名原生 app 與 disk image、提交 Apple 公證、staple app 與 disk image、上傳建置 artifacts，並發佈 GitHub Release assets。
 
 ## Legacy Electron app
 

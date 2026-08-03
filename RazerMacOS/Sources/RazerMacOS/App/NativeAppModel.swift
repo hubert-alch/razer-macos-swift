@@ -39,7 +39,7 @@ final class NativeAppModel {
       from: UserDefaults.standard.string(forKey: AppLanguage.storageKey)
     )
     let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
-      ?? "0.4.15"
+      ?? "0.4.16"
     let credits = NSAttributedString(
       string: AppText.string(.aboutCredits, language: language)
     )

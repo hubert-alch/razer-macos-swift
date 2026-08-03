@@ -7,7 +7,7 @@ DISPLAY_NAME="Razer macOS"
 APP_BUNDLE_NAME="$DISPLAY_NAME.app"
 BUNDLE_ID="com.w2ysw3m.RazerMacOS"
 MIN_SYSTEM_VERSION="14.0"
-APP_VERSION="0.4.15"
+APP_VERSION="0.4.16"
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PACKAGE_DIR="$ROOT_DIR/RazerMacOS"
