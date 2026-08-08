@@ -81,6 +81,8 @@ Legacy catalog coverage:
 
 Feature keys used by the catalog: `static`, `spectrum`, `breathe`, `reactive`, `starlight`, `ripple`, `wheel`, `brightness`, `mouseBrightness`, `dpi`, `pollRate`, and `battery`. See the full matrix for the per-device feature list.
 
+Keypads: the Tartarus family (Tartarus `0x0201`, Tartarus Chroma `0x0208`, Tartarus V2 `0x022B`, Tartarus Pro `0x0244`) is covered by the full keyboard feature set, including per-device matrix sizes for the ripple/wheel effects (4x6 on the V2, 1x21 on the Pro).
+
 ## Known Hardware Limitation
 
 On the current test machine, the native bridge and the legacy Node addon both detect the DeathAdder V3 Pro through `librazermacos`.

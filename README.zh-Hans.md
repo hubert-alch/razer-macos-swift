@@ -81,6 +81,8 @@ legacy 目录覆盖：
 
 目录使用的功能 key 包括：`static`、`spectrum`、`breathe`、`reactive`、`starlight`、`ripple`、`wheel`、`brightness`、`mouseBrightness`、`dpi`、`pollRate`、`battery`。每款设备的完整功能列表请看完整兼容性矩阵。
 
+小键盘：Tartarus 系列（Tartarus `0x0201`、Tartarus Chroma `0x0208`、Tartarus V2 `0x022B`、Tartarus Pro `0x0244`）支持完整的键盘功能集，涟漪/色轮效果按设备实际矩阵尺寸渲染（V2 为 4x6，Pro 为 1x21）。
+
 ## 已知硬件限制
 
 在当前测试机器上，原生 bridge 与 legacy Node addon 都可以通过 `librazermacos` 识别 DeathAdder V3 Pro。
