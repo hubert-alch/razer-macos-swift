@@ -258,5 +258,6 @@ int NativeRazerSetMousePollingRate(int internalDeviceId, unsigned short pollingR
 }
 
 void NativeRazerShutdown(void) {
+  NativeRazerXInputClose();
   close_cached_devices();
 }

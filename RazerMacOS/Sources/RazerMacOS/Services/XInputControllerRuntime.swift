@@ -6,7 +6,6 @@ struct XInputConnection: Equatable {
   static let protocolGip = 2
 
   let protocolCode: Int
-  let protocolName: String
 }
 
 enum XInputPollResult {
@@ -54,26 +53,11 @@ enum XInputControllerRuntime {
       return nil
     }
 
-    return XInputConnection(
-      protocolCode: code,
-      protocolName: code == XInputConnection.protocolGip
-        ? "Xbox One GIP protocol"
-        : "Xbox 360 protocol"
-    )
+    return XInputConnection(protocolCode: code)
   }
 
   nonisolated static func disconnect() {
     NativeRazerXInputClose()
-  }
-
-  /// Blocking single poll; call from a background task only. Returns nil on
-  /// timeout and on error — use `poll(timeoutMs:)` when the distinction
-  /// matters (e.g. to detect unplug).
-  nonisolated static func pollOnce(timeoutMs: Int32) -> NativeRazerGamepadState? {
-    if case .report(let state) = poll(timeoutMs: timeoutMs) {
-      return state
-    }
-    return nil
   }
 
   nonisolated static func poll(timeoutMs: Int32) -> XInputPollResult {

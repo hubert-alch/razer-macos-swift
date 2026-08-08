@@ -2790,6 +2790,26 @@ public enum LegacyDeviceCatalog {
       pollRates: [],
       brightnessZones: []
     ),
+    LegacyDeviceDefinition(
+      id: "wolverine_v3_pro_wired_8k",
+      name: "Razer Wolverine V3 Pro Wired 8K",
+      productId: "0x0A57",
+      kind: .gameController,
+      featureKeys: [],
+      dpiMax: nil,
+      pollRates: [],
+      brightnessZones: []
+    ),
+    LegacyDeviceDefinition(
+      id: "wolverine_v3_pro_dongle_8k",
+      name: "Razer Wolverine V3 Pro Dongle 8K",
+      productId: "0x0A59",
+      kind: .gameController,
+      featureKeys: [],
+      dpiMax: nil,
+      pollRates: [],
+      brightnessZones: []
+    ),
   ]
 
   public static let devices: [NativeDevice] = definitions.map(\.nativeDevice)

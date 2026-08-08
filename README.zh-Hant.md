@@ -63,6 +63,8 @@ Razer 現在提供 [Razer Synapse for Mac](https://mysupport.razer.com/app/answe
 | 裝置 | Product ID | 原生狀態 |
 | --- | --- | --- |
 | Razer Wolverine V3 Pro | `0x0A3F` | USB/接收器偵測，以及經 USB 直接讀取的即時輸入（XInput，自動識別 Xbox 360 / Xbox One GIP 協定，映射移植自 Linux xpad，待實機驗證）；震動和 LED 走輸出報告。Razer 私有設定檔/按鍵映射仍需協定擷取。 |
+| Razer Wolverine V3 Pro Wired 8K | `0x0A57` | 與 `0x0A3F` 相同的 XInput 直讀支援（8K 有線模式），待實機驗證。 |
+| Razer Wolverine V3 Pro Dongle 8K | `0x0A59` | 與 `0x0A3F` 相同的 XInput 直讀支援（8K 無線接收器），待實機驗證。 |
 
 legacy 目錄覆蓋：
 
@@ -75,7 +77,7 @@ legacy 目錄覆蓋：
 | 配件 | 15 | 固定顏色、擴展波浪、光譜/呼吸效果 |
 | 耳機 | 8 | 固定顏色、光譜/呼吸效果 |
 | eGPU 外接盒 | 2 | 固定顏色、波浪/光譜/呼吸效果 |
-| 手掣 | 1 | USB 偵測及 macOS Game Controller 即時輸入；電量、震動及燈光按系統能力啟用 |
+| 手掣 | 3 | USB 偵測及 macOS Game Controller 即時輸入；電量、震動及燈光按系統能力啟用 |
 
 目錄使用的功能 key 包括：`static`、`spectrum`、`breathe`、`reactive`、`starlight`、`ripple`、`wheel`、`brightness`、`mouseBrightness`、`dpi`、`pollRate`、`battery`。每款裝置的完整功能列表請看完整相容性矩陣。
 

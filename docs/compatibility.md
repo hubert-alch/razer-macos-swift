@@ -25,6 +25,8 @@ This matrix is generated from the current `src/devices/*.json` catalog and the l
 | Device | Product ID | Native status |
 | --- | --- | --- |
 | Razer Wolverine V3 Pro | `0x0A3F` | USB/receiver discovery plus live input read directly over USB (XInput; Xbox 360 / Xbox One GIP auto-detected, ported from Linux xpad). Rumble and LED via output reports. Pending hardware verification; Razer-specific settings still need protocol capture. |
+| Razer Wolverine V3 Pro Wired 8K | `0x0A57` | Same XInput direct-read support as `0x0A3F` (8K wired mode). Pending hardware verification. |
+| Razer Wolverine V3 Pro Dongle 8K | `0x0A59` | Same XInput direct-read support as `0x0A3F` (8K wireless dongle). Pending hardware verification. |
 
 ## Legacy Catalog Summary
 
@@ -37,7 +39,7 @@ This matrix is generated from the current `src/devices/*.json` catalog and the l
 | Accessories | 15 |
 | Headphones | 8 |
 | eGPU enclosures | 2 |
-| Game controllers | 1 |
+| Game controllers | 3 |
 
 ## Feature Legend
 
@@ -344,11 +346,13 @@ This matrix is generated from the current `src/devices/*.json` catalog and the l
 | Razer Thunderbolt 4 Dock Chroma | `0x0F21` | Off / no effect, Static color, Extended wave, Spectrum cycle, Breathing |
 | Razer Tomahawk ATX | `0x0f17` | Off / no effect, Static color, Extended wave, Spectrum cycle, Breathing |
 
-### Game controllers (1)
+### Game controllers (3)
 
 | Device | Product ID | Catalog features |
 | --- | --- | --- |
 | Razer Wolverine V3 Pro | `0x0a3f` | Live buttons/axes read directly over USB via XInput (mapping ported from Linux xpad, pending hardware verification); rumble and LED via output reports. Vendor profile/remapping writes are not claimed. |
+| Razer Wolverine V3 Pro Wired 8K | `0x0a57` | Same XInput direct-read surface as `0x0a3f` (8K wired mode); rumble and LED via output reports. Pending hardware verification. |
+| Razer Wolverine V3 Pro Dongle 8K | `0x0a59` | Same XInput direct-read surface as `0x0a3f` (8K wireless dongle); rumble and LED via output reports. Pending hardware verification. |
 
 ### Headphones (8)
 

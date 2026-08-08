@@ -25,6 +25,8 @@
 | 设备 | Product ID | 原生状态 |
 | --- | --- | --- |
 | Razer Wolverine V3 Pro | `0x0A3F` | USB/接收器识别，以及经 USB 直接读取的实时输入（XInput，自动识别 Xbox 360 / Xbox One GIP 协议，映射移植自 Linux xpad，待实机验证）；震动和 LED 走输出报告。雷蛇私有设置仍需协议抓包。 |
+| Razer Wolverine V3 Pro Wired 8K | `0x0A57` | 与 `0x0A3F` 相同的 XInput 直读支持（8K 有线模式），待实机验证。 |
+| Razer Wolverine V3 Pro Dongle 8K | `0x0A59` | 与 `0x0A3F` 相同的 XInput 直读支持（8K 无线接收器），待实机验证。 |
 
 ## legacy 目录摘要
 
@@ -37,7 +39,7 @@
 | 配件 | 15 |
 | 耳机 | 8 |
 | eGPU 外接盒 | 2 |
-| 手柄 | 1 |
+| 手柄 | 3 |
 
 ## 功能图例
 
@@ -344,11 +346,13 @@
 | Razer Thunderbolt 4 Dock Chroma | `0x0F21` | 关灯 / 无效果, 固定颜色, 扩展波浪, 光谱循环, 呼吸灯 |
 | Razer Tomahawk ATX | `0x0f17` | 关灯 / 无效果, 固定颜色, 扩展波浪, 光谱循环, 呼吸灯 |
 
-### 手柄 (1)
+### 手柄 (3)
 
 | 设备 | Product ID | 目录功能 |
 | --- | --- | --- |
 | Razer Wolverine V3 Pro | `0x0a3f` | 经 USB 直读 XInput 实时按键/摇杆（映射移植自 Linux xpad，待实机验证）；震动和 LED 走输出报告，不声明雷蛇私有配置写入。 |
+| Razer Wolverine V3 Pro Wired 8K | `0x0a57` | 与 `0x0a3f` 相同的 XInput 直读界面（8K 有线模式）；震动和 LED 走输出报告。待实机验证。 |
+| Razer Wolverine V3 Pro Dongle 8K | `0x0a59` | 与 `0x0a3f` 相同的 XInput 直读界面（8K 无线接收器）；震动和 LED 走输出报告。待实机验证。 |
 
 ### 耳机 (8)
 
