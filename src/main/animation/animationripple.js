@@ -120,6 +120,10 @@ constructor(device, featureConfiguration, color, backgroundColor = [0, 0, 0]) {
       82: [5, 19],
       83: [5, 20],
     };
+    // KEY_MAPPING coordinates are given in a full-size 6x22 keyboard matrix,
+    // scale them down for devices with a smaller matrix (e.g. keypads)
+    this.MAPPING_ROWS = 6;
+    this.MAPPING_COLS = 22;
     this.rippleEffectInterval = null;
 
     this.color = color;
@@ -158,8 +162,14 @@ constructor(device, featureConfiguration, color, backgroundColor = [0, 0, 0]) {
     // keyboard listener
     this.ioHook.on('keydown', (event) => {
       if (!(event.keycode in this.KEY_MAPPING)) return;
-      const rowIdx = this.KEY_MAPPING[event.keycode][0];
-      const colIdx = this.KEY_MAPPING[event.keycode][1];
+      const rowIdx = Math.min(
+        Math.floor((this.KEY_MAPPING[event.keycode][0] * this.nRows) / this.MAPPING_ROWS),
+        this.nRows - 1,
+      );
+      const colIdx = Math.min(
+        Math.floor((this.KEY_MAPPING[event.keycode][1] * this.nCols) / this.MAPPING_COLS),
+        this.nCols - 1,
+      );
 
       keyEvents.push({
         rowIdx,
