@@ -36,14 +36,14 @@ Razer 現在提供 [Razer Synapse for Mac](https://mysupport.razer.com/app/answe
 - Swift 到 `librazermacos` 的 C bridge
 - 原生 release 打包腳本，可產生 universal Developer ID 簽名 zip/dmg artifacts
 - GitHub Actions workflow，可產生已簽名、已公證的 GitHub Releases
-- `src/devices` 裝置目錄已更新，目前有 268 個裝置 JSON profile
+- `src/devices` 裝置目錄已更新，目前有 271 個裝置 JSON profile
 - legacy Electron app 保留為參考實作與 fallback
 
 ## 相容裝置與功能
 
 此倉庫有兩層支援：
 
-- legacy Electron app 保留原 razer-macos/OpenRazer 工作的廣泛裝置目錄。`src/devices` 目前有 268 個裝置 JSON profile，legacy UI 仍保留歷史的顏色、亮度、狀態、鍵盤、滑鼠、滑鼠墊、dock、eGPU、耳機、手掣與筆電相關邏輯。
+- legacy Electron app 保留原 razer-macos/OpenRazer 工作的廣泛裝置目錄。`src/devices` 目前有 271 個裝置 JSON profile，legacy UI 仍保留歷史的顏色、亮度、狀態、鍵盤、滑鼠、滑鼠墊、dock、eGPU、耳機、手掣與筆電相關邏輯。
 - 原生 app 的硬體驗證標準較嚴格。只有 SwiftUI/AppKit 介面、C bridge、macOS 硬體行為都已接好並測過的裝置，才會列入原生已驗證清單。DeathAdder V3 Pro 是第一個原生已驗證控制目標；這不是完整原生支援矩陣，也不代表專案只支援一款滑鼠。
 
 完整相容性矩陣：
@@ -58,6 +58,8 @@ Razer 現在提供 [Razer Synapse for Mac](https://mysupport.razer.com/app/answe
 | --- | --- | --- |
 | Razer DeathAdder V3 Pro | `0x00B7` | 偵測、DPI、回報率、電池/狀態 |
 
+實驗性原生辦公鍵盤控制：Pro Type（`0x0249`）、Pro Type Ultra 有線（`0x0277`）及 USB 接收器（`0x027B`）。已接通白色背光關閉／常亮／呼吸、亮度、電量及充電狀態讀取，待 macOS 實機驗證。不支援藍牙控制、RGB、巨集及 Fn 鎖設定。初代 Pro Type 關閉背光後，需調高亮度重新點亮。
+
 原生手掣目標：
 
 | 裝置 | Product ID | 原生狀態 |
@@ -71,7 +73,7 @@ legacy 目錄覆蓋：
 | 裝置類別 | 數量 | 目錄功能類型 |
 | --- | ---: | --- |
 | 滑鼠 | 113 | 固定顏色、光譜/呼吸/反應式效果、滑鼠亮度、DPI、回報率、電池 |
-| 鍵盤 | 119 | 固定顏色、波浪/光譜/反應式/呼吸/星光/漣漪/色輪效果、亮度 |
+| 鍵盤 | 122 | 固定顏色、波浪/光譜/反應式/呼吸/星光/漣漪/色輪效果、亮度 |
 | 滑鼠墊 | 8 | 固定顏色、波浪/光譜/呼吸效果、亮度 |
 | 滑鼠充電座 | 2 | 固定顏色、光譜/呼吸效果、電池 |
 | 配件 | 15 | 固定顏色、擴展波浪、光譜/呼吸效果 |

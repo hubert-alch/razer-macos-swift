@@ -15,6 +15,9 @@ struct HardwareDeviceSnapshot: Equatable {
   let internalDeviceId: Int
   let productId: String
   let kind: NativeDeviceKind
+  var batteryLevel: Int? = nil
+  var isCharging: Bool? = nil
+  var brightness: Int? = nil
 }
 
 enum HardwareApplyResult: Equatable {
@@ -34,12 +37,20 @@ protocol NativeRazerHardwareControlling {
 }
 
 final class NativeRazerHardwareController: NativeRazerHardwareControlling {
+  private var proTypeDeviceIds: Set<Int> = []
+
   func refreshDevices() -> [HardwareDeviceSnapshot] {
     var snapshots = Array(
       repeating: NativeRazerDeviceSnapshot(),
       count: 32
     )
     let count = NativeRazerRefreshDevices(&snapshots, Int32(snapshots.count))
+
+    proTypeDeviceIds = Set(
+      snapshots.prefix(max(0, Int(count)))
+        .filter { NativeRazerIsProTypeProductId($0.productId) == 1 }
+        .map { Int($0.internalDeviceId) }
+    )
 
     guard count > 0 else {
       return []
@@ -49,7 +60,10 @@ final class NativeRazerHardwareController: NativeRazerHardwareControlling {
       HardwareDeviceSnapshot(
         internalDeviceId: Int(snapshot.internalDeviceId),
         productId: productIdString(snapshot.productId),
-        kind: deviceKind(Int(snapshot.deviceKind))
+        kind: deviceKind(Int(snapshot.deviceKind)),
+        batteryLevel: snapshot.batteryLevel >= 0 ? Int(snapshot.batteryLevel) : nil,
+        isCharging: snapshot.charging >= 0 ? snapshot.charging == 1 : nil,
+        brightness: snapshot.brightness >= 0 ? Int(snapshot.brightness) : nil
       )
     }
   }
@@ -96,14 +110,30 @@ final class NativeRazerHardwareController: NativeRazerHardwareControlling {
   }
 
   func setLightingMode(_ mode: LightingMode, color: RazerColor, kind: NativeDeviceKind, internalDeviceId: Int?) -> HardwareApplyResult {
-    .previewOnly(.lightingPreviewOnly)
+    guard kind == .keyboard, let internalDeviceId, proTypeDeviceIds.contains(internalDeviceId) else {
+      return .previewOnly(.lightingPreviewOnly)
+    }
+    let command: Int32
+    switch mode {
+    case .none: command = 0
+    case .staticColor: command = 1
+    case .breathe: command = 2
+    default: return .failed(.couldNotApply(action: mode.rawValue))
+    }
+    return NativeRazerSetProTypeLighting(Int32(internalDeviceId), command) == 0
+      ? .applied : .failed(.couldNotApply(action: mode.rawValue))
   }
 
   func setBrightness(_ brightness: Int, zone: BrightnessZone, kind: NativeDeviceKind, internalDeviceId: Int?) -> HardwareApplyResult {
-    .previewOnly(.lightingPreviewOnly)
+    guard kind == .keyboard, zone == .all, let internalDeviceId, proTypeDeviceIds.contains(internalDeviceId) else {
+      return .previewOnly(.lightingPreviewOnly)
+    }
+    return NativeRazerSetProTypeBrightness(Int32(internalDeviceId), Int32(clamping: brightness)) == 0
+      ? .applied : .failed(.couldNotApply(action: "Brightness"))
   }
 
   func shutdown() {
+    proTypeDeviceIds.removeAll()
     NativeRazerShutdown()
   }
 

@@ -175,7 +175,10 @@ struct DeviceControlsView: View {
         brightnessControls
       }
 
-      Text(AppText.string(.lightingPreviewOnly, language: language))
+      Text(AppText.string(
+        device.controlConfiguration.monochromeLighting ? .lightingWhiteExperimental : .lightingPreviewOnly,
+        language: language
+      ))
         .font(.caption)
         .foregroundStyle(.secondary)
     }

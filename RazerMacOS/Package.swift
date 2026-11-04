@@ -1,6 +1,12 @@
 // swift-tools-version: 6.0
 
+import Foundation
 import PackageDescription
+
+let driverIncludePath = URL(fileURLWithPath: #filePath)
+  .deletingLastPathComponent()
+  .deletingLastPathComponent()
+  .appendingPathComponent("librazermacos/src/include").path
 
 let package = Package(
   name: "RazerMacOS",
@@ -15,7 +21,7 @@ let package = Package(
     .target(
       name: "NativeRazerBridgeC",
       cSettings: [
-        .unsafeFlags(["-I", "../librazermacos/src/include"])
+        .unsafeFlags(["-I", driverIncludePath])
       ],
       linkerSettings: [
         .linkedFramework("CoreFoundation"),

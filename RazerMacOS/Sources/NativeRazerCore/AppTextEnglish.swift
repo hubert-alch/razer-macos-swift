@@ -13,7 +13,7 @@ extension AppText {
     - DPI and polling-rate writes through librazermacos for matched mice
     - Hardware status with conservative timeout reporting
 
-    Lighting writes remain preview-only until the native bridge exposes and verifies the matching librazermacos endpoints for each device family.
+    Pro Type / Pro Type Ultra have experimental white-backlight writes over USB. Other native lighting controls remain preview-only.
 
     Built on 1kc/razer-macos, librazermacos, and OpenRazer device work.
     """,
@@ -83,6 +83,7 @@ extension AppText {
     .lightingBrightness: "Brightness",
     .lightingEffect: "Effect",
     .lightingGreen: "Green",
+    .lightingWhiteExperimental: "White backlight controls are experimental. USB cable / receiver only; macOS hardware testing is pending. After turning off Pro Type, raise brightness to turn it back on.",
     .lightingPreviewOnly: "Lighting changes are preview-only until the native bridge exposes lighting writes for this device.",
     .lightingRed: "Red",
     .lightingStaticColor: "Static color",

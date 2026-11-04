@@ -6,7 +6,7 @@
 
 这份矩阵根据当前的 `src/devices/*.json` 目录，以及 legacy Electron 版在 `src/main/feature/featurehelper.js` 中定义的默认功能集生成。
 
-> 由 268 个设备 JSON profile 生成。
+> 由 271 个设备 JSON profile 生成。
 
 ## 支持边界
 
@@ -19,6 +19,8 @@
 | 设备 | Product ID | 原生控制 | 状态 |
 | --- | --- | --- | --- |
 | Razer DeathAdder V3 Pro | `0x00B7` | 识别、DPI、回报率、电池/状态 | 第一个已验证目标；当前硬件路径的读取仍可能超时 |
+
+实验性原生办公键盘控制：Pro Type（`0x0249`）、Pro Type Ultra 有线（`0x0277`）及 USB 接收器（`0x027B`）。已接通白色背光关闭／常亮／呼吸、亮度、电量及充电状态读取，待 macOS 实机验证。不支持蓝牙控制、RGB、宏及 Fn 锁配置。初代 Pro Type 关闭背光后，需调高亮度重新点亮。
 
 ## 原生手柄目标
 
@@ -33,7 +35,7 @@
 | 类别 | 设备数量 |
 | --- | --- |
 | 鼠标 | 113 |
-| 键盘 | 119 |
+| 键盘 | 122 |
 | 鼠标垫 | 8 |
 | 鼠标充电座 | 2 |
 | 配件 | 15 |
@@ -182,7 +184,7 @@
 | Razer Viper V3 Pro Wired | `0x00c0` | 回报率, DPI, 电池 |
 | Razer Viper V3 Pro Wireless | `0x00c1` | 回报率, DPI, 电池 |
 
-### 键盘 (119)
+### 键盘 (122)
 
 | 设备 | Product ID | 目录功能 |
 | --- | --- | --- |
@@ -301,6 +303,9 @@
 | Razer Ornata V3 Tenkeyless | `0x02a3` | 关灯 / 无效果, 固定颜色, 扩展波浪, 光谱循环, 反应式, 呼吸灯, 涟漪, 色轮 |
 | Razer Ornata V3 X | `0x0294` | 关灯 / 无效果, 固定颜色, 光谱循环, 呼吸灯, 涟漪, 色轮 |
 | Razer Ornata V3 X Alternate | `0x02a2` | 关灯 / 无效果, 固定颜色, 光谱循环, 呼吸灯, 涟漪, 色轮 |
+| Razer Pro Type | `0x0249` | 关闭、白色常亮／呼吸、亮度、电量（实验性） |
+| Razer Pro Type Ultra Wired | `0x0277` | 关闭、白色常亮／呼吸、亮度、电量（实验性） |
+| Razer Pro Type Ultra Wireless | `0x027B` | 关闭、白色常亮／呼吸、亮度、电量（实验性） |
 | Razer Tartarus | `0x0201` | 关灯 / 无效果, 固定颜色, 扩展波浪, 光谱循环, 反应式, 呼吸灯, 星光, 亮度 |
 | Razer Tartarus Chroma | `0x0208` | 关灯 / 无效果, 固定颜色, 扩展波浪, 光谱循环, 反应式, 呼吸灯, 星光, 亮度 |
 | Razer Tartarus Pro | `0x0244` | 关灯 / 无效果, 固定颜色, 扩展波浪, 光谱循环, 反应式, 呼吸灯, 星光, 亮度, 涟漪, 色轮 |

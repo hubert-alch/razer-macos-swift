@@ -1,0 +1,24 @@
+{
+  "name": "Razer Pro Type Ultra Wireless",
+  "productId": "0x027B",
+  "mainType": "keyboard",
+  "image": "",
+  "features": [
+    {
+      "none": null
+    },
+    {
+      "static": null
+    },
+    {
+      "breathe": null
+    },
+    {
+      "brightness": null
+    },
+    {
+      "battery": null
+    }
+  ],
+  "featuresConfig": []
+}

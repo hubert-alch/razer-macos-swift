@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include "razerdevice.h"
+#include "razerprotype_driver.h"
 #include "razermouse_driver.h"
 
 extern bool is_mouse(IOUSBDeviceInterface **usb_dev);
@@ -171,6 +172,20 @@ void NativeRazerXInputParseGip(const uint8_t *data, int len, NativeRazerGamepadS
   *state = native_state_from(&raw);
 }
 
+int NativeRazerIsProTypeProductId(unsigned short productId) {
+  return razer_is_pro_type(productId) ? 1 : 0;
+}
+
+int NativeRazerSetProTypeLighting(int internalDeviceId, int mode) {
+  RazerDevice *device = find_cached_device(internalDeviceId);
+  return device ? razer_pro_type_set_lighting(device->usbDevice, mode) : -1;
+}
+
+int NativeRazerSetProTypeBrightness(int internalDeviceId, int percent) {
+  RazerDevice *device = find_cached_device(internalDeviceId);
+  return device ? razer_pro_type_set_brightness(device->usbDevice, percent) : -1;
+}
+
 int NativeRazerRefreshDevices(NativeRazerDeviceSnapshot *snapshots, int maxSnapshots) {
   if (snapshots == NULL || maxSnapshots <= 0) {
     return 0;
@@ -191,6 +206,14 @@ int NativeRazerRefreshDevices(NativeRazerDeviceSnapshot *snapshots, int maxSnaps
     snapshot.internalDeviceId = device->internalDeviceId;
     snapshot.productId = device->productId;
     snapshot.deviceKind = device_kind_for(device->usbDevice);
+    snapshot.batteryLevel = -1;
+    snapshot.charging = -1;
+    snapshot.brightness = -1;
+    if (razer_is_pro_type(device->productId)) {
+      snapshot.batteryLevel = razer_pro_type_read_battery(device->usbDevice);
+      snapshot.charging = razer_pro_type_read_charging(device->usbDevice);
+      snapshot.brightness = razer_pro_type_read_brightness(device->usbDevice);
+    }
     snapshots[count] = snapshot;
     count += 1;
   }

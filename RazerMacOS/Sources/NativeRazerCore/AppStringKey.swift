@@ -66,6 +66,7 @@ public enum AppStringKey: String, CaseIterable, Sendable {
   case lightingBrightness
   case lightingEffect
   case lightingGreen
+  case lightingWhiteExperimental
   case lightingPreviewOnly
   case lightingRed
   case lightingStaticColor

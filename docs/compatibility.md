@@ -6,7 +6,7 @@
 
 This matrix is generated from the current `src/devices/*.json` catalog and the legacy Electron feature defaults in `src/main/feature/featurehelper.js`.
 
-> Generated from 268 device JSON profiles.
+> Generated from 271 device JSON profiles.
 
 ## Support Boundary
 
@@ -19,6 +19,8 @@ This matrix is generated from the current `src/devices/*.json` catalog and the l
 | Device | Product ID | Native controls | Status |
 | --- | --- | --- | --- |
 | Razer DeathAdder V3 Pro | `0x00B7` | Discovery, DPI, polling rate, battery/status | Verified first target; readback can still time out on current hardware path |
+
+Experimental native office-keyboard controls: Pro Type (`0x0249`), Pro Type Ultra Wired (`0x0277`) and USB Receiver (`0x027B`). White backlight off / steady / breathing, brightness, battery and charging reads are connected to the C bridge. macOS hardware validation is pending; Bluetooth, RGB, macros and Fn-lock configuration are not supported. After turning off the original Pro Type, raise brightness to turn it back on.
 
 ## Native Game Controller Target
 
@@ -33,7 +35,7 @@ This matrix is generated from the current `src/devices/*.json` catalog and the l
 | Class | Devices |
 | --- | --- |
 | Mice | 113 |
-| Keyboards | 119 |
+| Keyboards | 122 |
 | Mouse mats | 8 |
 | Mouse docks | 2 |
 | Accessories | 15 |
@@ -182,7 +184,7 @@ This matrix is generated from the current `src/devices/*.json` catalog and the l
 | Razer Viper V3 Pro Wired | `0x00c0` | Polling rate, DPI, Battery |
 | Razer Viper V3 Pro Wireless | `0x00c1` | Polling rate, DPI, Battery |
 
-### Keyboards (119)
+### Keyboards (122)
 
 | Device | Product ID | Catalog features |
 | --- | --- | --- |
@@ -301,6 +303,9 @@ This matrix is generated from the current `src/devices/*.json` catalog and the l
 | Razer Ornata V3 Tenkeyless | `0x02a3` | Off / no effect, Static color, Extended wave, Spectrum cycle, Reactive, Breathing, Ripple, Wheel |
 | Razer Ornata V3 X | `0x0294` | Off / no effect, Static color, Spectrum cycle, Breathing, Ripple, Wheel |
 | Razer Ornata V3 X Alternate | `0x02a2` | Off / no effect, Static color, Spectrum cycle, Breathing, Ripple, Wheel |
+| Razer Pro Type | `0x0249` | Off, steady white, breathing white, brightness, battery (experimental) |
+| Razer Pro Type Ultra Wired | `0x0277` | Off, steady white, breathing white, brightness, battery (experimental) |
+| Razer Pro Type Ultra Wireless | `0x027B` | Off, steady white, breathing white, brightness, battery (experimental) |
 | Razer Tartarus | `0x0201` | Off / no effect, Static color, Extended wave, Spectrum cycle, Reactive, Breathing, Starlight, Brightness |
 | Razer Tartarus Chroma | `0x0208` | Off / no effect, Static color, Extended wave, Spectrum cycle, Reactive, Breathing, Starlight, Brightness |
 | Razer Tartarus Pro | `0x0244` | Off / no effect, Static color, Extended wave, Spectrum cycle, Reactive, Breathing, Starlight, Brightness, Ripple, Wheel |

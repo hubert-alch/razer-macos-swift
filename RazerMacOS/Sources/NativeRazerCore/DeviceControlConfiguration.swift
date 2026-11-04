@@ -2,14 +2,17 @@ public struct DeviceControlConfiguration: Equatable, Sendable {
   public let dpi: DPIConfiguration?
   public let pollingRates: [Int]
   public let brightnessZones: [BrightnessZone]
+  public let monochromeLighting: Bool
   public let lightingModes: [LightingMode]
 
   public init(
     dpi: DPIConfiguration?,
     pollingRates: [Int],
     brightnessZones: [BrightnessZone] = [],
-    lightingModes: [LightingMode] = []
+    lightingModes: [LightingMode] = [],
+    monochromeLighting: Bool = false
   ) {
+    self.monochromeLighting = monochromeLighting
     self.dpi = dpi
     self.pollingRates = pollingRates
     self.brightnessZones = brightnessZones
@@ -25,7 +28,7 @@ public struct DeviceControlConfiguration: Equatable, Sendable {
   }
 
   public var supportsStaticColor: Bool {
-    lightingModes.contains(.staticColor)
+    lightingModes.contains(.staticColor) && !monochromeLighting
   }
 
   public static let deathAdderV3Pro = DeviceControlConfiguration(

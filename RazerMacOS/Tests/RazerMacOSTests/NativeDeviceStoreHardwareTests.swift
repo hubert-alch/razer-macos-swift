@@ -3,6 +3,44 @@ import Testing
 @testable import RazerMacOS
 
 struct NativeDeviceStoreHardwareTests {
+  @Test func store_whenProTypeWriteFails_preservesDisplayedSettings() throws {
+    let hardware = FakeHardwareController(
+      devices: [HardwareDeviceSnapshot(internalDeviceId: 99, productId: "0x0277", kind: .keyboard)],
+      lightingResult: .failed(.couldNotApply(action: "Static"))
+    )
+    let store = NativeDeviceStore(hardwareController: hardware)
+    let device = try #require(store.devices.first { $0.productId == "0x0277" })
+    store.selectedDeviceId = device.id
+    store.setLightingMode(.staticColor)
+    #expect(store.selectedDevice?.controlState.activeMode == LightingMode.none)
+    #expect(store.lastRefreshSummary == .couldNotApply(action: "Static"))
+  }
+
+  @Test func refresh_whenProTypeResponds_preservesZeroBatteryAndWhiteControls() throws {
+    let hardware = FakeHardwareController(devices: [HardwareDeviceSnapshot(
+      internalDeviceId: 99, productId: "0x027B", kind: .keyboard,
+      batteryLevel: 0, isCharging: false, brightness: 50
+    )])
+    let store = NativeDeviceStore(hardwareController: hardware)
+    let device = try #require(store.devices.first { $0.productId == "0x027B" })
+    #expect(device.hardwareInternalId == 99)
+    #expect(device.controlState.batteryLevel == 0)
+    #expect(device.controlState.isCharging == false)
+    #expect(device.controlState.brightness[.all] == 50)
+    #expect(device.bridgeStatusMessage == .connected)
+    #expect(!device.controlConfiguration.supportsStaticColor)
+  }
+
+  @Test func refresh_whenProTypeReadFails_reportsTimeoutWithoutInventedBattery() throws {
+    let hardware = FakeHardwareController(devices: [HardwareDeviceSnapshot(
+      internalDeviceId: 99, productId: "0x0249", kind: .keyboard
+    )])
+    let store = NativeDeviceStore(hardwareController: hardware)
+    let device = try #require(store.devices.first { $0.productId == "0x0249" })
+    #expect(device.bridgeStatusMessage == .detectedReadTimedOut)
+    #expect(device.controlState.batteryLevel == nil)
+  }
+
   @Test func refresh_whenKeyboardHardwareMatchesLegacyCatalog_marksDeviceConnected() throws {
     let hardware = FakeHardwareController(
       devices: [

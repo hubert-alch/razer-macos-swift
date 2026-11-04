@@ -13,7 +13,7 @@ extension AppText {
     - 对已匹配鼠标通过 librazermacos 写入 DPI 和回报率
     - 带保守超时提示的硬件状态
 
-    灯效写入仍为预览状态；需要原生桥接暴露并验证对应设备族的 librazermacos 端点后才会写入硬件。
+    Pro Type / Pro Type Ultra 已接通实验性 USB 白色背光控制；其他原生灯效控件仍为预览。
 
     基于 1kc/razer-macos、librazermacos 和 OpenRazer 设备资料构建。
     """,
@@ -83,6 +83,7 @@ extension AppText {
     .lightingBrightness: "亮度",
     .lightingEffect: "效果",
     .lightingGreen: "绿色",
+    .lightingWhiteExperimental: "白色背光控制为实验性功能，仅支持 USB 有线／接收器，待 macOS 实机验证。Pro Type 关闭背光后，请调高亮度重新点亮。",
     .lightingPreviewOnly: "灯效变更仅为预览；此设备需要原生桥接暴露灯效写入后才能写入硬件。",
     .lightingRed: "红色",
     .lightingStaticColor: "静态颜色",

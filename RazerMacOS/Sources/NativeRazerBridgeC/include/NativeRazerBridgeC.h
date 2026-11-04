@@ -11,6 +11,9 @@ typedef struct {
   int internalDeviceId;
   unsigned short productId;
   int deviceKind;
+  int batteryLevel;
+  int charging;
+  int brightness;
 } NativeRazerDeviceSnapshot;
 
 typedef struct {
@@ -51,6 +54,9 @@ enum {
   NativeRazerGPButtonDpadRight = 1 << 14
 };
 
+int NativeRazerIsProTypeProductId(unsigned short productId);
+int NativeRazerSetProTypeLighting(int internalDeviceId, int mode);
+int NativeRazerSetProTypeBrightness(int internalDeviceId, int percent);
 int NativeRazerRefreshDevices(NativeRazerDeviceSnapshot *snapshots, int maxSnapshots);
 int NativeRazerRefreshMice(NativeRazerMouseSnapshot *snapshots, int maxSnapshots);
 int NativeRazerSetMouseDPI(int internalDeviceId, unsigned short dpi);

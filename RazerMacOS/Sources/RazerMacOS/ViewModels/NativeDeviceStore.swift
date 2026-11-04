@@ -61,6 +61,11 @@ final class NativeDeviceStore {
       var connectedDevice = device
       connectedDevice.connection = "librazermacos internal #\(hardwareDevice.internalDeviceId)"
       connectedDevice.hardwareInternalId = hardwareDevice.internalDeviceId
+      connectedDevice.controlState.batteryLevel = hardwareDevice.batteryLevel
+      connectedDevice.controlState.isCharging = hardwareDevice.isCharging
+      if let brightness = hardwareDevice.brightness {
+        connectedDevice.controlState.brightness[.all] = brightness
+      }
 
       if let hardwareMouse = hardwareMice.first(where: { $0.productId == device.productId }) {
         let readSucceeded = hardwareMouse.dpi > 0 || hardwareMouse.pollingRate > 0
@@ -73,7 +78,10 @@ final class NativeDeviceStore {
         connectedDevice.controlState.batteryLevel = hardwareMouse.batteryLevel
         connectedDevice.controlState.isCharging = hardwareMouse.isCharging
       } else {
-        connectedDevice.setBridgeStatus(.connected)
+        connectedDevice.setBridgeStatus(
+          device.controlConfiguration.monochromeLighting && hardwareDevice.brightness == nil
+            ? .detectedReadTimedOut : .connected
+        )
       }
       return connectedDevice
     }
@@ -128,7 +136,10 @@ final class NativeDeviceStore {
       internalDeviceId: device.hardwareInternalId
     )
     updateSelectedDevice { selected in
-      selected.controlState.activeMode = mode
+      switch result {
+      case .applied, .previewOnly: selected.controlState.activeMode = mode
+      case .failed: break
+      }
       selected.setBridgeStatus(statusText(for: result))
     }
     lastRefreshSummary = summaryText(action: mode.rawValue, result: result)
@@ -171,7 +182,10 @@ final class NativeDeviceStore {
       internalDeviceId: device.hardwareInternalId
     )
     updateSelectedDevice { selected in
-      selected.controlState.brightness[zone] = brightness
+      switch result {
+      case .applied, .previewOnly: selected.controlState.brightness[zone] = brightness
+      case .failed: break
+      }
       selected.setBridgeStatus(statusText(for: result))
     }
     lastRefreshSummary = summaryText(action: "\(zone.rawValue) \(brightness)", result: result)

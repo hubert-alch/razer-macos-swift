@@ -71,7 +71,8 @@ public struct LegacyDeviceDefinition: Equatable, Sendable {
       dpi: featureKeys.contains(.dpi) ? DPIConfiguration(min: 100, max: dpiMax ?? 16_000, step: 100) : nil,
       pollingRates: featureKeys.contains(.pollRate) ? (pollRates.isEmpty ? [125, 250, 500, 1_000] : pollRates) : [],
       brightnessZones: brightnessZones,
-      lightingModes: lightingModes
+      lightingModes: lightingModes,
+      monochromeLighting: ["0x0249", "0x0277", "0x027B"].contains(productId)
     )
   }
 
@@ -2569,6 +2570,36 @@ public enum LegacyDeviceCatalog {
       dpiMax: 16000,
       pollRates: [125, 500, 1000],
       brightnessZones: []
+    ),
+    LegacyDeviceDefinition(
+      id: "pro_type",
+      name: "Razer Pro Type",
+      productId: "0x0249",
+      kind: .keyboard,
+      featureKeys: [.none, .staticLighting, .breathe, .brightness, .battery],
+      dpiMax: nil,
+      pollRates: [],
+      brightnessZones: [.all]
+    ),
+    LegacyDeviceDefinition(
+      id: "pro_type_ultra_wired",
+      name: "Razer Pro Type Ultra Wired",
+      productId: "0x0277",
+      kind: .keyboard,
+      featureKeys: [.none, .staticLighting, .breathe, .brightness, .battery],
+      dpiMax: nil,
+      pollRates: [],
+      brightnessZones: [.all]
+    ),
+    LegacyDeviceDefinition(
+      id: "pro_type_ultra_wireless",
+      name: "Razer Pro Type Ultra Wireless",
+      productId: "0x027B",
+      kind: .keyboard,
+      featureKeys: [.none, .staticLighting, .breathe, .brightness, .battery],
+      dpiMax: nil,
+      pollRates: [],
+      brightnessZones: [.all]
     ),
     LegacyDeviceDefinition(
       id: "raptor27",

@@ -2,6 +2,14 @@ import NativeRazerBridgeC
 import Testing
 
 struct NativeRazerBridgeControllerTests {
+  @Test func proTypeProductIds_areLimitedToKnownUSBVariants() {
+    for productId: UInt16 in [0x0249, 0x0277, 0x027B] {
+      #expect(NativeRazerIsProTypeProductId(productId) == 1)
+    }
+    #expect(NativeRazerIsProTypeProductId(0x0204) == 0)
+    #expect(NativeRazerIsProTypeProductId(0xFFFF) == 0)
+  }
+
   @Test func gameControllerProductId_whenWolverineV3Pro_returnsSupported() {
     #expect(NativeRazerIsGameControllerProductId(0x0A3F) == 1)
   }

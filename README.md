@@ -36,14 +36,14 @@ Razer now provides [Razer Synapse for Mac](https://mysupport.razer.com/app/answe
 - C bridge from Swift into `librazermacos`
 - Native release packaging script for universal Developer ID signed zip/dmg artifacts
 - GitHub Actions workflow for signed, notarized GitHub Releases
-- Refreshed device catalog under `src/devices` with 268 device JSON profiles
+- Refreshed device catalog under `src/devices` with 271 device JSON profiles
 - Legacy Electron app retained as a reference implementation and fallback
 
 ## Support Matrix
 
 There are two support layers in this repository:
 
-- Legacy Electron app keeps the broad device catalog from the original razer-macos/OpenRazer work. The `src/devices` directory currently contains 268 device JSON profiles, and the legacy UI still owns the historical color, brightness, state, keyboard, mouse, mouse mat, dock, eGPU, headphone, game-controller, and laptop logic.
+- Legacy Electron app keeps the broad device catalog from the original razer-macos/OpenRazer work. The `src/devices` directory currently contains 271 device JSON profiles, and the legacy UI still owns the historical color, brightness, state, keyboard, mouse, mouse mat, dock, eGPU, headphone, game-controller, and laptop logic.
 - Native app verified hardware path is stricter. A device is listed here only when the SwiftUI/AppKit surface, C bridge, and macOS hardware behavior have been wired and tested. DeathAdder V3 Pro is the first verified native control target; this is not the full native support matrix and it does not mean the project supports only one mouse.
 
 Full compatibility matrix:
@@ -58,6 +58,8 @@ Native verified control targets:
 | --- | --- | --- |
 | Razer DeathAdder V3 Pro | `0x00B7` | Discovery, DPI, polling rate, battery/status |
 
+Experimental native office-keyboard controls: Pro Type (`0x0249`), Pro Type Ultra Wired (`0x0277`) and USB Receiver (`0x027B`). White backlight off / steady / breathing, brightness, battery and charging reads are connected to the C bridge. macOS hardware validation is pending; Bluetooth, RGB, macros and Fn-lock configuration are not supported. After turning off the original Pro Type, raise brightness to turn it back on.
+
 Native game-controller targets:
 
 | Device | Product ID | Native status |
@@ -71,7 +73,7 @@ Legacy catalog coverage:
 | Device class | Count | Catalog feature families |
 | --- | ---: | --- |
 | Mice | 113 | Static color, spectrum/breathing/reactive effects, mouse brightness, DPI, polling rate, battery |
-| Keyboards | 119 | Static color, wave/spectrum/reactive/breathing/starlight/ripple/wheel effects, brightness |
+| Keyboards | 122 | Static color, wave/spectrum/reactive/breathing/starlight/ripple/wheel effects, brightness |
 | Mouse mats | 8 | Static color, wave/spectrum/breathing effects, brightness |
 | Mouse docks | 2 | Static color, spectrum/breathing effects, battery |
 | Accessories | 15 | Static color, extended wave, spectrum/breathing effects |
